@@ -50,7 +50,7 @@ plt.plot(life_exp)
 
 regression = scipy.stats.linregress(life_exp.index,life_exp)
 plt.plot(range(2006,2023),regression[0]*range(2006,2023)+regression[1], color='r',label='régression')
-print("Longévité = {a}*année + {b}".format(a = round(regression[0], b=regression[1]))
+print("Longévité = {a}*année + {b}".format(a = round(regression[0],3), b=round(regression[1],2)))
 plt.title('Longévité en fonction de lannée')
 plt.xticks(range(2006,2023,2))
 plt.show();
