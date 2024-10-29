@@ -40,4 +40,27 @@ plt.legend()
 plt.show();
 # -
 
-# Ce graphe nous montre que le 'positive affect' ne peut pas être considéré comme une mesure de bonheur suffisante. Si cela correspondrait au bonheur, on aurait 'positive affect'+'negative affect'=1, ce qui correspond à la courbe rouge. On voit qu'effectivement le nuage de point suit la tendance de la droite rouge, mais la pente de la régression n'est pas la même que celle
+# Ce graphe nous montre que le 'positive affect' ne peut pas être considéré comme une mesure de bonheur suffisante. Si cela correspondrait au bonheur, on aurait 'positive affect'+'negative affect'=1, ce qui correspond à la courbe rouge. On voit qu'effectivement le nuage de point suit la tendance de la droite rouge, mais la pente de la régression n'est pas la même que celle de la droite rouge.
+
+# +
+dfb=df[df['year']>=2006]
+
+life_exp=dfb.groupby(['year'])['Healthy life expectancy at birth'].mean()
+plt.plot(life_exp)
+
+regression = scipy.stats.linregress(life_exp.index,life_exp)
+plt.plot(range(2006,2023),regression[0]*range(2006,2023)+regression[1], color='r',label='régression')
+print("Longévité = {a}*année + {b}".format(a = round(regression[0], b=regression[1]))
+plt.title('Longévité en fonction de lannée')
+plt.xticks(range(2006,2023,2))
+plt.show();
+
+df['Healthy known'] = df['Healthy life expectancy at birth'].notna()
+print(df.groupby(['year'])['Healthy known'].sum())
+# -
+
+# La longévité a augmenté de 5 ans depuis 2006. La donnée de 2005 n'est pas utilisable, car l'information n'est recensée que pour 27 pays, ce qui ne permet pas de faire une moyenne mondiale fiable.
+
+
+
+
