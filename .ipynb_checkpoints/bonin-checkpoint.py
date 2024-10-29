@@ -18,3 +18,4 @@ df.isna().sum()
 # cheese NaN
 
 
+#BOOOOOOOOOONIIN
