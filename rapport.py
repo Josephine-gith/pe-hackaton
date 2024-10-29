@@ -98,11 +98,12 @@ df_clean["categorie"] = pd.cut(df_clean['Log GDP per capita'],
        labels=['pauvre', 'moyen', 'riche'])
 # -
 
-On 
+# On tripartie selon les tranches divisées par moyenne- ecart-type et moyenne+ ecart-type
 
+#
+#
 
-
-
+# 1. les pays les plus pauvres
 
 # +
 # l'argent fait-il le bonheur ? les pays les plus pauvres (moyenne-ecart type)
