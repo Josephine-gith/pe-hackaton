@@ -4,32 +4,17 @@ import common
 import numpy as np
 import scipy.stats
 
-# # Antichambre de tests de Luigi Romain
+# # Quelques éléments de sociologie
+# Voici quelques exemples de données étudiées à partir du dataset.
 #
 
 df = common.load_data("database.xls")
-df.head()
-# On va virer les outliers
-social = df['Social support'][(df['Social support'] > 0.4) & (df['Healthy life expectancy at birth']> 35)]
-healthy = df['Healthy life expectancy at birth'][(df['Social support'] > 0.4) & (df['Healthy life expectancy at birth']> 35)]
-plt.plot(social,healthy, '+')
-regression = scipy.stats.linregress(social,healthy)
-plt.plot(np.linspace(0.4,1,1000), regression[0]*np.linspace(0.4,1,1000)+ regression[1])
-plt.xlabel('Social support')
-plt.ylabel('Healthy life expectancy')
 
-"""def clean_data(colonne1, colonne2, colonne3 = None):
-    df_notna=(colonne1.notna())&(colonne2.notna())
-    return colonne1[df_notna], colonne2[df_notna]
+# ## Corrélation entre santé et entourage
+# Une première question que l'on peut se poser est sur un possible lien entre espérance de vie et entourage social : en effet, on peut s'attendre non seulement à un effet positif sur la santé mentale, mais aussi sur la santé physique des individus lorsque l'on sait par exemple qu'un stress prolongé augmente la probabilité d'apparition de nombreuses maladies.
 
-def tracage_regression(colonne1, colonne2, colonne3 = None):
-    plt.plot(social,healthy, '+')
-    regression = scipy.stats.linregress(colonne1,colonne2)
-    plt.plot(np.linspace(0.4,1,1000), regression[0]*np.linspace(0.4,1,1000)+ regression[1])
-    plt.xlabel(colonne1.name)
-    plt.ylabel(colonne2.name)"""
 common.analyse(df['Social support'],df['Healthy life expectancy at birth'])
 
-
+# On obtient un résultat cohérent avec notre intition initiale.
 
 
