@@ -148,9 +148,10 @@ axr = sns.relplot(data=df_clean[df_clean["categorie"]=="riche"], x="Log GDP per 
                        hue='year',);
 axr.set(title = "pays riches")
 
-axall = sns.relplot(data=df_clean[df_clean["categorie"]=="pauvre"], x="Log GDP per capita", y='Freedom to make life choices',    
+axall = sns.relplot(data=df_clean, x="Log GDP per capita", y='Freedom to make life choices',    
                        hue='year',);
 
+axall.set(title = "tous pays")
 # -
 
 
