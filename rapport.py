@@ -127,5 +127,5 @@ ax2.set(xlim=(mini, maxi))
 ax.set(title = "en relatif : " )
 ax2.set(title = "à l'échelle PIBmin/PIBmax : " )
 # -
-
+# Pour plus de détails, veuillez consulter les dossiers personnels
 
