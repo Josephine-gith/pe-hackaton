@@ -15,6 +15,6 @@ df.isna().sum()
 # On remarque qu'il y a beaucoup de NaN dans la colonne *'Perception of corruption'*, car Poutine empêche aux gens de poucave
 #
 # ## Conclusion ##
-# NaN
+# cheese NaN
 
 
