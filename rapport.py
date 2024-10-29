@@ -23,5 +23,7 @@
 # Pour répondre à ces interrogations, la méthode générale que nous avons adopté est la suivante :
 # - Nettoyer les données à utiliser (suppression des NaN...)
 # - Étudier les liens entre différentes grandeurs (regression linéaires)
+#
+# ## Analyse des Résultats ##
 
 
