@@ -20,7 +20,8 @@ plt.ylabel('Healthy life expectancy')
 
 # +
 def clean_data(colonne1, colonne2, colonne3 = None):
-    
+    df_notna=(colonne1.notna())&(colonne2.notna())
+    return colonne1[df_notna], colonne2[df_notna]
 
 def tracage_regression(colonne1, colonne2, colonne3 = None):
     plt.plot(social,healthy, '+')
@@ -28,7 +29,8 @@ def tracage_regression(colonne1, colonne2, colonne3 = None):
     plt.plot(np.linspace(0.4,1,1000), regression[0]*np.linspace(0.4,1,1000)+ regression[1])
     plt.xlabel(colonne1.name)
     plt.ylabel(colonne2.name)
-tracage_regression(df,df['Social support'], df['Healthy life expectancy at birth'])
+clean = clean_data(df['Social support'], df['Healthy life expectancy at birth'])
+tracage_regression(clean[0],clean[1])
 # -
 
 
