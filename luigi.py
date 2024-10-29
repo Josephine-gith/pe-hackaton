@@ -24,7 +24,6 @@ plt.xlabel("Social support")
 plt.ylabel("Healthy life expectancy")
 
 
-# +
 """def clean_data(colonne1, colonne2, colonne3 = None):
     df_notna=(colonne1.notna())&(colonne2.notna())
     return colonne1[df_notna], colonne2[df_notna]
