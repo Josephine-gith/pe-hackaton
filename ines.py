@@ -59,6 +59,7 @@ df_clean = df[~df["Log GDP per capita"].isna()]
 moy = df["Log GDP per capita"].mean()
 sigma = df["Log GDP per capita"].std()
 maxi = df["Log GDP per capita"].max()
+mini = df["Log GDP per capita"].min()
 
 df_clean["categorie"] = pd.cut(df_clean['Log GDP per capita'],
        bins=[0,moy-sigma, moy+sigma, maxi],
@@ -72,20 +73,85 @@ df_clean
 
 sns.relplot(data=df_clean[df_clean["categorie"]=="pauvre"], x="Log GDP per capita", y='Positive affect',    
                        hue='year',);
+ax2= sns.relplot(data=df_clean[df_clean["categorie"]=="pauvre"], x="Log GDP per capita", y='Positive affect',    
+                       hue='year' );
+ax2.set(xlim=(mini, maxi))
 
 # +
 # l'argent fait-il le bonheur ? les pays moyens (moyenne +- ecart-type)
 
 sns.relplot(data=df_clean[df_clean["categorie"]=="moyen"], x="Log GDP per capita", y='Positive affect',    
                        hue='year',);
+ax2= sns.relplot(data=df_clean[df_clean["categorie"]=="moyen"], x="Log GDP per capita", y='Positive affect',    
+                       hue='year' );
+ax2.set(xlim=(mini, maxi))
 
 # +
 # l'argent fait-il le bonheur ? les pays les plus riches (moyenne+ecart type)
 
-sns.relplot(data=df_clean[df_clean["categorie"]=="riche"], x="Log GDP per capita", y='Positive affect',    
-                       hue='year',);
+ax = sns.relplot(data=df_clean[df_clean["categorie"]=="riche"], x="Log GDP per capita", y='Positive affect',    
+                       hue='year' );
+
+ax2= sns.relplot(data=df_clean[df_clean["categorie"]=="riche"], x="Log GDP per capita", y='Positive affect',    
+                       hue='year' );
+ax2.set(xlim=(mini, maxi))
+
+ax, ax2
+
 # -
 
 
+# +
+# l'argent fait-il le malheur ? les pays les plus pauvres (moyenne-ecart type)
+
+sns.relplot(data=df_clean[df_clean["categorie"]=="pauvre"], x="Log GDP per capita", y='Negative affect',    
+                       hue='year',);
+ax2= sns.relplot(data=df_clean[df_clean["categorie"]=="pauvre"], x="Log GDP per capita", y='Negative affect',    
+                       hue='year' );
+ax2.set(xlim=(mini, maxi))
+
+
+# +
+# l'argent fait-il le malheur ? les pays moyens
+
+sns.relplot(data=df_clean[df_clean["categorie"]=="moyen"], x="Log GDP per capita", y='Negative affect',    
+                       hue='year',);
+ax2= sns.relplot(data=df_clean[df_clean["categorie"]=="moyen"], x="Log GDP per capita", y='Negative affect',    
+                       hue='year' );
+ax2.set(xlim=(mini, maxi))
+
+# +
+# l'argent fait-il le malheur ? les pays les plus riches
+
+sns.relplot(data=df_clean[df_clean["categorie"]=="riche"], x="Log GDP per capita", y='Negative affect',    
+                       hue='year',);
+ax2= sns.relplot(data=df_clean[df_clean["categorie"]=="riche"], x="Log GDP per capita", y='Negative affect',    
+                       hue='year' );
+ax2.set(xlim=(mini, maxi))
+# -
+
+sns.relplot(data=df_clean, x="Log GDP per capita", y='Negative affect',    
+                       hue='year');
+
+# +
+# l'argent fait-il la liberté ? les pays moyens
+
+axp = sns.relplot(data=df_clean[df_clean["categorie"]=="pauvre"], x="Log GDP per capita", y='Freedom to make life choices',    
+                       hue='year',);
+axp.set(title = "pays pauvres")
+
+axm = sns.relplot(data=df_clean[df_clean["categorie"]=="moyen"], x="Log GDP per capita", y='Freedom to make life choices',    
+                       hue='year',);
+axm.set(title = "pays moyens")
+
+axr = sns.relplot(data=df_clean[df_clean["categorie"]=="riche"], x="Log GDP per capita", y='Freedom to make life choices',    
+                       hue='year',);
+axr.set(title = "pays riches")
+
+axall = sns.relplot(data=df_clean, x="Log GDP per capita", y='Freedom to make life choices',    
+                       hue='year',);
+
+axall.set(title = "tous pays")
+# -
 
 
