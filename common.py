@@ -30,9 +30,9 @@ def tracage_regression(colonne1, colonne2, colonne3=None):
     plt.plot(colonne1, colonne2, "+")
     regression = scipy.stats.linregress(colonne1, colonne2)
     plt.plot(
-        np.linspace(0.4, 1, 1000),
+        np.linspace(colonne1.min(), colonne1.max(), 1000),
         regression[0] * np.linspace(0.4, 1, 1000) + regression[1],
-        label="Régression linéaire",
+        label=r"Régression linéaire, $ \alpha =$" + str(round(regression[0], 3)),
     )
     plt.legend(loc="best")
     plt.xlabel(colonne1.name)
@@ -40,6 +40,6 @@ def tracage_regression(colonne1, colonne2, colonne3=None):
 
 
 def analyse(colonne1, colonne2, marge=0.05, colonne3=None):
-    clean = clean_data(colonne1, colonne2)
-    totally_clean = remove_outliers(clean[0]), remove_outliers(clean[1])
+    clean = remove_outliers(colonne1), remove_outliers(colonne2)
+    totally_clean = clean_data(clean[0], clean[1])
     tracage_regression(totally_clean[0], totally_clean[1])
