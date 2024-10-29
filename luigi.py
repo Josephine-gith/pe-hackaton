@@ -18,6 +18,10 @@ plt.plot(np.linspace(0.4,1,1000), regression[0]*np.linspace(0.4,1,1000)+ regress
 plt.xlabel('Social support')
 plt.ylabel('Healthy life expectancy')
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3c9f6eb6c99ee91e1525c34a040b6f41827f7964
 """def clean_data(colonne1, colonne2, colonne3 = None):
     df_notna=(colonne1.notna())&(colonne2.notna())
     return colonne1[df_notna], colonne2[df_notna]
