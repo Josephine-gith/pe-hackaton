@@ -12,7 +12,7 @@ def load_data(filename):
     return df
 
 
-def clean_data(colonne1, colonne2=None, colonne3=None):
+def clean_data(colonne1, colonne2=None):
     if colonne2 is None:
         return colonne1[colonne1.notna()]
     df_notna = (colonne1.notna()) & (colonne2.notna())
@@ -26,7 +26,7 @@ def remove_outliers(colonne1, marge=0.05):
     ]
 
 
-def tracage_regression(colonne1, colonne2, colonne3=None):
+def tracage_regression(colonne1, colonne2):
     plt.plot(colonne1, colonne2, "+")
     regression = scipy.stats.linregress(colonne1, colonne2)
     plt.plot(
@@ -39,7 +39,7 @@ def tracage_regression(colonne1, colonne2, colonne3=None):
     plt.ylabel(colonne2.name)
 
 
-def analyse(colonne1, colonne2, marge=0.05, colonne3=None):
+def analyse(colonne1, colonne2, marge=0.05):
     clean = remove_outliers(colonne1), remove_outliers(colonne2)
     totally_clean = clean_data(clean[0], clean[1])
     tracage_regression(totally_clean[0], totally_clean[1])

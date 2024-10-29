@@ -4,7 +4,8 @@ import common
 import numpy as np
 import scipy.stats
 
-# # Bienvenue dans mon document ^^ !!! uwu
+# # Antichambre de tests de Luigi Romain
+#
 
 df = common.load_data("database.xls")
 df.head()
