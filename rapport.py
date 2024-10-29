@@ -224,3 +224,7 @@ plt.title('Générosité en fonction de la liberté de faire des choix - tous pa
 plt.show();
 
 # Pas non plus de régressions claires possibles
+
+
+
+
